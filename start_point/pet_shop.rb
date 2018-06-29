@@ -60,12 +60,13 @@ def customer_cash customer, amount
   customer[:cash] -= amount
 end
 
-def customer_pet_count customers
-  number_pets = 0
-  for customer in customers
-    number_pets += customer[:pets]
-  end
+def customer_pet_count customer
+  # if customer[:pets].empty?
+  #   return 0
+  # end
+  return customer[:pets].length
 end
+
 
 def add_pet_to_customer customer, pet
   customer[:pets] << pet
