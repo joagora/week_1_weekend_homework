@@ -61,14 +61,18 @@ def customer_cash customer, amount
 end
 
 def customer_pet_count customer
-  # if customer[:pets].empty?
-  #   return 0
-  # end
   return customer[:pets].length
 end
 
 
 def add_pet_to_customer customer, pet
   customer[:pets] << pet
+end
 
+def customer_can_afford_pet customer, pet
+  if customer[:cash] >= pet[:price]
+    return true
+  else
+    return false
+  end
 end
