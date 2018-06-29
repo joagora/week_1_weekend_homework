@@ -20,12 +20,12 @@ def stock_counts shop
   return shop[:pets].length
 end
 
-def all_pets_by_breed shop, breed
+def pets_by_breed shop, breed
   pets = shop[:pets]
-  number_of_dogs_by_breed = 0
+  number_of_dogs_by_breed = []
   for pet in pets
-    if per[:breed] == breed
-      number_of_dogs_by_breed += 1
+    if pet[:breed] == breed
+      number_of_dogs_by_breed << breed
     end
   end
   return number_of_dogs_by_breed
