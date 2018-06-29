@@ -59,3 +59,11 @@ end
 def customer_cash customer, amount
   customer[:cash] -= amount
 end
+
+def customer_pet_count customers
+  number_pets = 0
+  for customer in customers
+    number_pets += customer[:pets]
+  end
+
+end
