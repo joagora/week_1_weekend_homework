@@ -37,10 +37,9 @@ def find_pet_by_name shop, name
   for pet in pets
     if pet[:name] == name
       return pet
-    else
-      return nil
     end
   end
+  return nil
 end
 
 
@@ -56,8 +55,13 @@ def add_pet_to_stock shop, pet
   shop[:pets] << pet
 end
 
-def customer_cash customer, amount
-  customer[:cash] -= amount
+def customer_cash customer
+  customer[:cash]
+end
+
+def remove_customer_cash customer, amount
+  customer[:cash] = customer[:cash] - amount
+  return customer
 end
 
 def customer_pet_count customer
@@ -75,4 +79,11 @@ def customer_can_afford_pet customer, pet
   else
     return false
   end
+end
+
+def sell_pet_to_customer shop, pet, customer
+  increase_pets_sold(shop, 1)
+  remove_pet_by_name(shop, pet)
+  add_pet_to_customer(customer, pet)
+  add_or_remove_cash(shop, pet[:price])
 end
