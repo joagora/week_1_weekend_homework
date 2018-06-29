@@ -35,12 +35,15 @@ end
 def find_pet_by_name shop, name
   pets = shop[:pets]
   pets_name = shop[:pets]
-  pet_hash = Hash.new
+  pet_hash = nil
   for pet in pets
     index_pet = pets.index(pet)
     if pets[index_pet][:name] == name
-      pet_hash[:name] = name
+      pet_hash = {
+        name: name
+      }
+
     end
   end
-  return pet_hash
+  p pet_hash
 end
