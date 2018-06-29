@@ -55,3 +55,7 @@ end
 def add_pet_to_stock shop, pet
   shop[:pets] << pet
 end
+
+def customer_cash customer
+  customer[:cash]
+end
