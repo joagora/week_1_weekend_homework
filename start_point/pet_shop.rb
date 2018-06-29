@@ -34,16 +34,18 @@ end
 
 def find_pet_by_name shop, name
   pets = shop[:pets]
-  pets_name = shop[:pets]
-  pet_hash = nil
   for pet in pets
-    index_pet = pets.index(pet)
-    if pets[index_pet][:name] == name
-      pet_hash = {
-        name: name
-      }
-
+    if pet[:name] == name
+      return pet
     end
   end
-  p pet_hash
+end
+
+
+
+def remove_pet_by_name shop, name
+  pet_to_be_removed = find_pet_by_name(shop, name)
+  pets = shop[:pets]
+  pets.delete(pet_to_be_removed)
+
 end
