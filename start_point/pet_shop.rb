@@ -1,3 +1,7 @@
+def pet_shop_name shop
+  shop[:name]
+end
+
 def total_cash shop
   return shop[:admin][:total_cash]
 end
@@ -16,7 +20,7 @@ def increase_pets_sold shop, number_of_pets
 end
 
 
-def stock_counts shop
+def stock_count shop
   return shop[:pets].length
 end
 
@@ -82,10 +86,16 @@ def customer_can_afford_pet customer, pet
 end
 
 def sell_pet_to_customer shop, pet, customer
-  increase_pets_sold(shop, 1)
-  remove_pet_by_name(shop, pet)
-  add_pet_to_customer(customer, pet)
-  add_or_remove_cash(shop, pet[:price])
-  remove_customer_cash(customer, pet[:price])
+  if pet != nil
+    name = find_pet_by_name(shop, pet[:name])
+    if customer_can_afford_pet(customer, name) == true
+      increase_pets_sold(shop, 1)
+      remove_pet_by_name(shop, pet)
+      add_pet_to_customer(customer, pet)
+      add_or_remove_cash(shop, pet[:price])
+      remove_customer_cash(customer, pet[:price])
+    end
+  end
 end
+
 #
