@@ -1,14 +1,16 @@
 def pet_shop_name shop
-  shop[:name]
+  return shop[:name]
 end
 
 def total_cash shop
-  return shop[:admin][:total_cash]
+  total_cash = shop[:admin][:total_cash]
+  return total_cash
 end
 
-
 def add_or_remove_cash shop, amount
-  return shop[:admin][:total_cash] += amount
+  total_cash = total_cash(shop)
+  total_cash += amount
+  return shop[:admin][:total_cash] = total_cash
 end
 
 def pets_sold shop
@@ -19,20 +21,19 @@ def increase_pets_sold shop, number_of_pets
   return shop[:admin][:pets_sold] += number_of_pets
 end
 
-
 def stock_count shop
   return shop[:pets].length
 end
 
 def pets_by_breed shop, breed
   pets = shop[:pets]
-  number_of_dogs_by_breed = []
+  dogs_by_breed = []
   for pet in pets
     if pet[:breed] == breed
-      number_of_dogs_by_breed << breed
+      dogs_by_breed << breed
     end
   end
-  return number_of_dogs_by_breed
+  return dogs_by_breed
 end
 
 
@@ -52,7 +53,6 @@ def remove_pet_by_name shop, name
   pet_to_be_removed = find_pet_by_name(shop, name)
   pets = shop[:pets]
   pets.delete(pet_to_be_removed)
-
 end
 
 def add_pet_to_stock shop, pet
@@ -60,12 +60,11 @@ def add_pet_to_stock shop, pet
 end
 
 def customer_cash customer
-  customer[:cash]
+  return customer[:cash]
 end
 
 def remove_customer_cash customer, amount
-  customer[:cash] = customer[:cash] - amount
-  return customer
+  customer[:cash] -= amount
 end
 
 def customer_pet_count customer
@@ -97,5 +96,3 @@ def sell_pet_to_customer shop, pet, customer
     end
   end
 end
-
-#
